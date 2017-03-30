@@ -1,0 +1,85 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://assets-cdn.github.com/assets/frameworks-5b61aadc846f0818981ceec31b49c475fb084c163fdec5efbc2c21ef539092a9.css
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; HTML Proofer/3.6.0; +https://github.com/gjtorikian/html-proofer)
+  response:
+    status:
+      code: 0
+      message: 
+    headers: {}
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+    adapter_metadata:
+      effective_url: https://assets-cdn.github.com/assets/frameworks-5b61aadc846f0818981ceec31b49c475fb084c163fdec5efbc2c21ef539092a9.css
+  recorded_at: Tue, 28 Mar 2017 15:34:59 GMT
+- request:
+    method: head
+    uri: http://assets-cdn.github.com/assets/frameworks-5b61aadc846f0818981ceec31b49c475fb084c163fdec5efbc2c21ef539092a9.css
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Mozilla/5.0 (compatible; HTML Proofer/3.6.0; +https://github.com/gjtorikian/html-proofer)
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Content-Type:
+      - text/css
+      Last-Modified:
+      - Tue, 21 Mar 2017 14:41:26 GMT
+      Expires:
+      - Wed, 21 Mar 2018 14:56:17 GMT
+      Cache-Control:
+      - max-age=31536000, public
+      Access-Control-Allow-Origin:
+      - "*"
+      Timing-Allow-Origin:
+      - "*"
+      X-GitHub-Request-Id:
+      - CCA2:1B5B9:18A09ED:18FA982:58D13F11
+      Content-Length:
+      - '121557'
+      Accept-Ranges:
+      - bytes
+      Date:
+      - Tue, 28 Mar 2017 16:01:54 GMT
+      Via:
+      - 1.1 varnish
+      Age:
+      - '608737'
+      X-Served-By:
+      - cache-sin18033-SIN
+      X-Cache:
+      - HIT
+      X-Cache-Hits:
+      - '2'
+      X-Timer:
+      - S1490716914.260294,VS0,VE0
+      Vary:
+      - Accept-Encoding
+      X-Fastly-Request-ID:
+      - e4d10978d2ba70f81f52205b06a2a1c6eeac3f4b
+      Connection:
+      - keep-alive
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: '1.1'
+    adapter_metadata:
+      effective_url: http://assets-cdn.github.com/assets/frameworks-5b61aadc846f0818981ceec31b49c475fb084c163fdec5efbc2c21ef539092a9.css
+  recorded_at: Tue, 28 Mar 2017 16:01:54 GMT
+recorded_with: VCR 2.9.3
