@@ -25,6 +25,8 @@ For more reference, see http://marcwitteveen.com/mailtogenerator/
 
 Follow the same instructions as for any html-proofer custom class. (LINK TO NEW HTML-PROOFER WIKI PAGE WITH THIS INFORMATION.)
 
+Our ruby gemp is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-proofer-mailto_awesome)
+
 1. Create a Gemspec file like the following and add it to your project
 
        Gem
@@ -56,4 +58,10 @@ For a full example of a website project that includes testing  continuous integr
 
 This project is released under the MIT license.
 
-Releasing new versions: submit to Ruby using (WHAT COMMANDS?)
+Releasing new versions:
+
+```sh
+bump patch
+gem build html-proofer-mailto_awesome.gemspec
+gem push html-proofer-mailto_awesome-*.gem
+```
