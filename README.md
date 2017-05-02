@@ -56,4 +56,10 @@ For a full example of a website project that includes testing  continuous integr
 
 This project is released under the MIT license.
 
-Releasing new versions: submit to Ruby using (WHAT COMMANDS?)
+Releasing new versions:
+
+```sh
+bump patch
+gem build html-proofer-mailto_awesome.gemspec
+gem push html-proofer-mailto_awesome-*.gem
+```
