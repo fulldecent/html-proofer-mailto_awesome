@@ -17,4 +17,6 @@ Gem::Specification.new do |s|
   s.license = 'MIT'
 
   s.add_runtime_dependency 'html-proofer', '~> 3.0', '>= 3.0.0'
+
+  s.add_development_dependency 'rake'
 end
