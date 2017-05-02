@@ -25,6 +25,8 @@ For more reference, see http://marcwitteveen.com/mailtogenerator/
 
 Follow the same instructions as for any html-proofer custom class. (LINK TO NEW HTML-PROOFER WIKI PAGE WITH THIS INFORMATION.)
 
+Our ruby gemp is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-proofer-mailto_awesome)
+
 1. Create a Gemspec file like the following and add it to your project
 
        Gem
