@@ -8,5 +8,9 @@ env:
 sudo: false
 cache: bundler
 
+before_install:
+  - gem install bundler
+  - gem update bundler
+  
 git:
   depth: 10
