@@ -1,7 +1,9 @@
+[![Build Status](https://travis-ci.org/fulldecent/html-proofer-mailto-awesome.svg?branch=master)](https://travis-ci.org/fulldecent/html-proofer-mailto-awesome)
+
 # html-proofer-mailto-awesome
 A custom [html-proofer](https://github.com/gjtorikian/html-proofer) test that makes your `mailto:` links awesome.
 
-# What is an awesome `mailto` link?
+## What is an awesome `mailto` link?
 
 We should use awesome links as psychological warfare against users. Users will send us emails with stupid or annoying content that we don't want. At big companies (like Amazon) they have abandoned email altogether because of this reason. So instead we prefill the email with the message we want to receive. It takes active cognitive effort for the user to put in their unwanted message.
 
@@ -19,7 +21,7 @@ This is an awesome link:
 
 For more reference, see http://marcwitteveen.com/mailtogenerator/
 
-# How do I use it
+## How do I use it
 
 Follow the same instructions as for any html-proofer custom class. (LINK TO NEW HTML-PROOFER WIKI PAGE WITH THIS INFORMATION.)
 
@@ -50,7 +52,7 @@ For additional tests you can run on your website, see [Lightning Sites](https://
 
 For a full example of a website project that includes testing  continuous integration testing for awesome mailto links and many other best practices, see our 
        
-# Contributing
+## Contributing
 
 This project is released under the MIT license.
 
