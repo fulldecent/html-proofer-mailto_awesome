@@ -46,6 +46,10 @@ Also if you like, you can enable your project for continuous integration testing
        Travis
        Travis
        
+For additional tests you can run on your website, see [Lightning Sites](https://github.com/fulldecent/lightning-sites) and for a sample GitHub project that implements this testing and follows many other HTML development best practices, see [HTML Website Template](https://github.com/fulldecent/html-website-template).
+
+For a full example of a website project that includes testing  continuous integration testing for awesome mailto links and many other best practices, see our 
+       
 # Contributing
 
 This project is released under the MIT license.
