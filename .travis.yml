@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.2.0
+  - 2.3.1
 env:
   global:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
@@ -8,9 +8,5 @@ env:
 sudo: false
 cache: bundler
 
-before_install:
-  - gem install bundler
-  - gem update bundler
-  
 git:
   depth: 10
