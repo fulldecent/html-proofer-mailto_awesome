@@ -6,10 +6,6 @@ env:
     - NOKOGIRI_USE_SYSTEM_LIBRARIES=true
 
 sudo: false
-cache: bundler
-
-before_install:
-  - gem install bundler
 
 git:
   depth: 10
