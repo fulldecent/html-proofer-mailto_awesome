@@ -1,6 +1,6 @@
-task :default => [:spec]
+task :default => [:test]
 
 desc 'run Rspec specs'
-task :spec do
+task :test do
   sh 'rspec spec'
 end

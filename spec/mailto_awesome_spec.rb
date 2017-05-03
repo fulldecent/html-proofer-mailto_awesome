@@ -1,9 +1,16 @@
+require_relative 'spec_helper'
+
 RSpec.describe ::MailtoAwesome do
-  it "has a version number" do
-    expect(::MailtoAwesome::VERSION).not_to be nil
+
+  it 'Good mailto link' do
+    file = "#{FIXTURES_DIR}/mailto_awesome.html"
+    proofer = run_proofer(file, :file)
+    expect(proofer.failed_tests.last).to eq nil
   end
 
-  it "does something useful" do
-    expect(false).to eq(false)
+  it 'Bad mailto link' do
+    file = "#{FIXTURES_DIR}/mailto_not_awesome.html"
+    proofer = run_proofer(file, :file)
+    expect(proofer.failed_tests.last).to match(%r{This is a not-awesome mailto link!})
   end
 end
