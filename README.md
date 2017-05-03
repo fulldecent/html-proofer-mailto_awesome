@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/fulldecent/html-proofer-mailto-awesome.svg?branch=master)](https://travis-ci.org/fulldecent/html-proofer-mailto-awesome)
+[![Build Status](https://travis-ci.org/fulldecent/html-proofer-mailto_awesome.svg?branch=master)](https://travis-ci.org/fulldecent/html-proofer-mailto_awesome)
 
-# html-proofer-mailto-awesome
+# html-proofer-mailto_awesome
 A custom [html-proofer](https://github.com/gjtorikian/html-proofer) test that makes your `mailto:` links awesome.
 
 ## What is an awesome `mailto` link?
