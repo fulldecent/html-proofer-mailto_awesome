@@ -1,4 +1,4 @@
-class MailtoAwesome < ::HTMLProofer::Check
+class MailToAwesome < ::HTMLProofer::Check
   def mailto?
     return false if @link.ignore? || @link.href.nil?
     @link.href.match /mailto/
@@ -19,5 +19,4 @@ class MailtoAwesome < ::HTMLProofer::Check
       end
     end
   end
-  endclass MailtoAwesome
 end
