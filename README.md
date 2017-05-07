@@ -23,19 +23,31 @@ For more reference, see http://marcwitteveen.com/mailtogenerator/
 
 ## How do I use it
 
-Follow the same instructions as for any html-proofer custom class. (LINK TO NEW HTML-PROOFER WIKI PAGE WITH THIS INFORMATION.)
+Follow the same instructions as for any [html-proofer custom class](https://github.com/gjtorikian/html-proofer/wiki/Extensions-(custom-classes)).
 
-Our ruby gemp is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-proofer-mailto_awesome)
+Our ruby gem is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-proofer-mailto_awesome)
 
-1. Create a Gemspec file like the following and add it to your project
+1. Add new dependency to your Ruby project
+    
+    In Gemfile:
+        
+         gem 'html-proofer-mailto_awesome'
+    
+    Or in your .gemspec: 
 
-       Gem
-       Gem
+         Gem::Specification.new do |s|
+             ...
+             s.add_runtime_dependency 'html-proofer-mailto_awesome'
+         end
        
 2. Create a Rakefile like the following and add it to your project
 
-       Rake
-       Rake
+       task :default => [:test]
+       
+       desc 'run Rspec specs'
+       task :test do
+         sh 'rspec spec'
+       end
        
 3. Run `bundle install`
 
@@ -45,10 +57,11 @@ Also if you like, you can enable your project for continuous integration testing
 
 1. Set up Travis CI for your project
 
-2. Create a `.travis.yml` file like the following to your project
+2. Add a `.travis.yml` file like the following to your project and your spec will run automatically
 
-       Travis
-       Travis
+       language: ruby
+       rvm:
+         - 2.3.1
        
 For additional tests you can run on your website, see [Lightning Sites](https://github.com/fulldecent/lightning-sites) and for a sample GitHub project that implements this testing and follows many other HTML development best practices, see [HTML Website Template](https://github.com/fulldecent/html-website-template).
 
