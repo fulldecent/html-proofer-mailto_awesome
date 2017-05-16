@@ -9,6 +9,7 @@ class MailToAwesome < ::HTMLProofer::Check
   end
 
   def run
+    return unless @options[:check_mailto_awesome]
     @html.css('a').each do |node|
       @link = create_element(node)
       line = node.line
