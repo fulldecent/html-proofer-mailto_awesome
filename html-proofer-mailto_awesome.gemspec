@@ -7,7 +7,7 @@ require 'mailto_awesome/version'
 Gem::Specification.new do |s|
   s.name = 'html-proofer-mailto_awesome'
   s.version = MailtoAwesome::VERSION
-  s.date = '2017-02-05'
+  s.date = '2017-16-05'
   s.summary = 'Custom html-proofer test'
   s.description = 'A custom html-proofer test that makes your mailto links awesome'
   s.authors = ['William Entriken']
