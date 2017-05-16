@@ -75,6 +75,7 @@ Releasing new versions:
 
 ```sh
 bump patch
+rm html-proofer-mailto_awesome-*.gem
 gem build html-proofer-mailto_awesome.gemspec
 gem push html-proofer-mailto_awesome-*.gem
 ```
