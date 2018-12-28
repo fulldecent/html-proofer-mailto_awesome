@@ -1,6 +1,6 @@
-task :default => [:test]
+require "bundler/gem_tasks"
+require "rspec/core/rake_task"
 
-desc 'run Rspec specs'
-task :test do
-  sh 'rspec spec'
-end
+RSpec::Core::RakeTask.new(:spec)
+
+task :default => :spec

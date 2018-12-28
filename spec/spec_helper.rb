@@ -7,17 +7,15 @@ require_relative '../lib/mail_to_awesome'
 FIXTURES_DIR = 'spec/fixtures'
 
 RSpec.configure do |config|
-  # Use color in STDOUT
-  config.color = true
+  # Enable flags like --only-failures and --next-failure
+  config.example_status_persistence_file_path = ".rspec_status"
 
-  # Use color not only in STDOUT but also in pagers and files
-  config.tty = true
+  # Disable RSpec exposing methods globally on `Module` and `main`
+  config.disable_monkey_patching!
 
-  # Use the specified formatter
-  config.formatter = :documentation # :progress, :html, :textmate
-
-  # Run in a random order
-  config.order = :random
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
 end
 
 def capture_stderr(*)
