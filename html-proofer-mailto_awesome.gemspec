@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.homepage = 'https://github.com/fulldecent/html-proofer-mailto_awesome'
   s.license = 'MIT'
 
-  s.add_runtime_dependency 'html-proofer', '~> 3.0', '>= 3.0.0'
+  s.add_runtime_dependency 'html-proofer', '~> 3.0', '>= 3.9.0'
   s.add_runtime_dependency 'rake', '~> 12.0', '>= 12.0.0'
   s.add_development_dependency 'rspec', '~> 3.5', '>= 3.5.0'
   s.add_development_dependency 'vcr', '~> 3.0', '>= 3.0.3'
