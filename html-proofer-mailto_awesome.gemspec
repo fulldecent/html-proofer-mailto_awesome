@@ -1,7 +1,7 @@
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'html/proofer/mailto_awesome/version'
-require 'rake'
+
 Gem::Specification.new do |spec|
   spec.name = 'html-proofer-mailto_awesome'
   spec.version = MailtoAwesome::VERSION
