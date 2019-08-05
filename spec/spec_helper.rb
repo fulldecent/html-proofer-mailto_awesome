@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'vcr'
 require 'timecop'
 require 'html-proofer'
-require_relative '../lib/mail_to_awesome'
+require_relative '../lib/mailto_awesome'
 
 FIXTURES_DIR = 'spec/fixtures'
 
