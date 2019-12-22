@@ -28,7 +28,7 @@ Follow the same instructions as for any [html-proofer custom class](https://gith
 Our ruby gem is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-proofer-mailto_awesome)
 
 1. Add new dependency to your Ruby project
-    
+  
     In Gemfile:
         
          gem 'html-proofer-mailto_awesome'
@@ -39,7 +39,7 @@ Our ruby gem is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-pro
              ...
              s.add_runtime_dependency 'html-proofer-mailto_awesome'
          end
-       
+    
 2. Create a Rakefile like the following and add it to your project
 
        task :default => [:test]
@@ -48,7 +48,7 @@ Our ruby gem is [html-proofer-mailto_awesome](https://rubygems.org/gems/html-pro
        task :test do
          sh 'rspec spec'
        end
-       
+  
 3. Run `bundle install`
 
 4. Run `rake`
@@ -73,7 +73,7 @@ This project is released under the MIT license.
 Releasing new versions:
 
 ```sh
-bump patch
+gem bump
 rm html-proofer-mailto_awesome-*.gem
 gem build html-proofer-mailto_awesome.gemspec
 gem push html-proofer-mailto_awesome-*.gem
