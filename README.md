@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/fulldecent/html-proofer-mailto_awesome.svg?branch=master)](https://travis-ci.org/fulldecent/html-proofer-mailto_awesome)
+![Gem](https://img.shields.io/gem/v/html-proofer-mailto_awesome) [![Ruby](https://github.com/fulldecent/html-proofer-mailto_awesome/actions/workflows/ruby.yml/badge.svg)](https://github.com/fulldecent/html-proofer-mailto_awesome/actions/workflows/ruby.yml)
 
 # html-proofer-mailto_awesome
 A custom [html-proofer](https://github.com/gjtorikian/html-proofer) test that makes your `mailto:` links awesome.
