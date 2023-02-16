@@ -22,9 +22,9 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_development_dependency "bundler", "~> 2.0.2"
-  spec.add_development_dependency "rake", "~> 12.3.1"
-  spec.add_runtime_dependency 'html-proofer', '~> 5.0', '>= 5.0.3'
-  spec.add_development_dependency 'rspec', '~> 3.5', '>= 3.5.0'
-  spec.add_development_dependency 'vcr', '~> 3.0', '>= 3.0.3'
-  spec.add_development_dependency 'timecop', '~> 0.8', '>= 0.8.1'
+  spec.add_development_dependency "rake", "~> 13.0.6"
+  spec.add_runtime_dependency 'html-proofer', '~> 5.0', '>= 5.0.4'
+  spec.add_development_dependency 'rspec', '~> 3.12', '>= 3.12.0'
+  spec.add_development_dependency 'vcr', '~> 6.1', '>= 6.1.0'
+  spec.add_development_dependency 'timecop', '~> 0.9', '>= 0.9.6'
 end
