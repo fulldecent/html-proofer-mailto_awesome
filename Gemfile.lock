@@ -34,7 +34,7 @@ GEM
       zeitwerk (~> 2.5)
     io-event (1.1.6)
     mini_portile2 (2.8.1)
-    nokogiri (1.14.2)
+    nokogiri (1.14.3)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
     pdf-reader (2.11.0)
