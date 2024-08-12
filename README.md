@@ -7,13 +7,13 @@ A custom [html-proofer](https://github.com/gjtorikian/html-proofer) test that ma
 
 We should use awesome links as psychological warfare against users. Users will send us emails with stupid or annoying content that we don't want. At big companies (like Amazon) they have abandoned email altogether because of this reason. So instead we prefill the email with the message we want to receive. It takes active cognitive effort for the user to put in their unwanted message.
 
-For example, this is a not-awesome `mailto` link:
+❌ For example, this is a not-awesome `mailto` link:
 
 ```html
 <a href="mailto:support@pacificmedicaltraining.com">Email us</a>
 ```
 
-This is an awesome link:
+✅ This is an awesome link:
 
 ```html
 <a href="mailto:support@pacificmedicaltraining.com?subject=Signing up&amp;body=Hello,\nI'd like to sign up for your course, can you please send me more information.">Email us</a>
