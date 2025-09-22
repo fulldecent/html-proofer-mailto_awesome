@@ -24,7 +24,7 @@ jobs:
       matrix:
         # Only test currently supported Ruby versions: https://www.ruby-lang.org/en/downloads/branches/
         ruby-version: ['3.1', '3.2', '3.3']
-
+      fail-fast: false
     steps:
     - uses: actions/checkout@v4
     - name: Set up Ruby
