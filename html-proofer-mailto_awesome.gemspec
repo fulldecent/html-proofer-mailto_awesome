@@ -21,10 +21,20 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 2.0.2"
-  spec.add_development_dependency "rake", "~> 13.0.6"
+  spec.required_ruby_version = ">= 2.7.0"
+  
+  spec.metadata = {
+    "bug_tracker_uri"   => "https://github.com/fulldecent/html-proofer-mailto_awesome/issues",
+    "changelog_uri"     => "https://github.com/fulldecent/html-proofer-mailto_awesome/blob/main/CHANGELOG.md",
+    "source_code_uri"   => "https://github.com/fulldecent/html-proofer-mailto_awesome",
+    "homepage_uri"      => "https://github.com/fulldecent/html-proofer-mailto_awesome",
+    "rubygems_mfa_required" => "true"
+  }
+
+  spec.add_development_dependency "bundler", ">= 2.0"
+  spec.add_development_dependency "rake", ">= 13.0"
   spec.add_runtime_dependency 'html-proofer', '~> 5.0', '>= 5.0.4'
-  spec.add_development_dependency 'rspec', '~> 3.12', '>= 3.12.0'
-  spec.add_development_dependency 'vcr', '~> 6.1', '>= 6.1.0'
-  spec.add_development_dependency 'timecop', '~> 0.9', '>= 0.9.6'
+  spec.add_development_dependency 'rspec', '~> 3.12'
+  spec.add_development_dependency 'vcr', '~> 6.1'
+  spec.add_development_dependency 'timecop', '~> 0.9'
 end
