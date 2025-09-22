@@ -21,11 +21,11 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = ">= 2.7.0"
+  # Minimum Ruby version supported by the Ruby project: https://www.ruby-lang.org/en/downloads/branches/
+  spec.required_ruby_version = ">= 3.1.0"
   
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/fulldecent/html-proofer-mailto_awesome/issues",
-    "changelog_uri"     => "https://github.com/fulldecent/html-proofer-mailto_awesome/blob/main/CHANGELOG.md",
     "source_code_uri"   => "https://github.com/fulldecent/html-proofer-mailto_awesome",
     "homepage_uri"      => "https://github.com/fulldecent/html-proofer-mailto_awesome",
     "rubygems_mfa_required" => "true"
