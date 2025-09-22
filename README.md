@@ -73,7 +73,8 @@ This project is released under the MIT license.
 Releasing new versions:
 
 ```sh
-gem bump
+gem install bump
+bump major
 rm html-proofer-mailto_awesome-*.gem
 gem build html-proofer-mailto_awesome.gemspec
 gem push html-proofer-mailto_awesome-*.gem
