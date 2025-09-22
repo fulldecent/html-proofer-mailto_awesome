@@ -25,7 +25,8 @@ def capture_stderr(*)
   $stdout = fake_out = StringIO.new unless ENV['VERBOSE']
   begin
     yield
-  rescue RuntimeError
+  rescue RuntimeError, SystemExit
+    # Catch both RuntimeError and SystemExit from HTMLProofer
   ensure
     $stderr = original_stderr
     $stdout = original_stdout unless ENV['VERBOSE']
@@ -35,6 +36,13 @@ end
 
 def make_proofer(item, type, opts)
   opts[:log_level] ||= :error
+  
+  # Add our custom check when the check_mailto_awesome option is enabled
+  if opts[:check_mailto_awesome]
+    opts[:checks] ||= ['Scripts', 'Links', 'Images']
+    opts[:checks] << 'MailtoAwesome' unless opts[:checks].include?('MailtoAwesome')
+  end
+  
   case type
     when :file
       HTMLProofer.check_file(item, opts)
