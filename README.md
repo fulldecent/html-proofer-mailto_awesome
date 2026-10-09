@@ -128,6 +128,7 @@ Do this every month or so:
 1. Read [Ruby maintenance branches](https://www.ruby-lang.org/en/downloads/branches/). Update `required_ruby_version` and the Ruby matrix in [`.github/workflows/ruby.yml`](.github/workflows/ruby.yml) when a branch leaves security maintenance, or when a new branch enters normal maintenance.
 1. Review external actions in [`.github/workflows`](.github/workflows). GitHub-supported actions, the ones under the `actions/` organization, need a short review. `ruby/setup-ruby` is not one of those. Read its changelog before moving the tag.
 1. Review `html-proofer` against the [5.x releases](https://github.com/gjtorikian/html-proofer/releases). This gem depends on `~> 5.0`, `>= 5.0.4`. It also depends on `logger`, because [Ruby 4.0 removed that library from the default gems](https://stdgems.org/libraries/logger/) and html-proofer still loads it.
+1. Keep `ffi` at 1.17.4 or newer, and `nokogiri` at 1.19.0 or newer, in `Gemfile.lock`. The x86_64-linux builds of ffi 1.17.2 and nokogiri 1.18.10 set `required_ruby_version` to `< 3.5.dev`, so `bundle install` fails on Ruby 4.0. ffi 1.17.4 and nokogiri 1.19.4 allow Ruby before 4.1. ethon pulls in ffi. html-proofer pulls in nokogiri.
 
 ## References
 
