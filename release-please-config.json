@@ -1,0 +1,11 @@
+{
+  "bootstrap-sha": "b4c37c17fee1ec30cb127daad3f5c437f1c341db",
+  "packages": {
+    ".": {
+      "release-type": "ruby",
+      "package-name": "html-proofer-mailto_awesome",
+      "include-component-in-tag": false,
+      "version-file": "lib/html/proofer/mailto_awesome/version.rb"
+    }
+  }
+}

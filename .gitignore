@@ -15,3 +15,6 @@
 
 # The lint workflow runs npx, which can leave a local install tree.
 node_modules/
+
+# gem build writes the package in the working directory. rake release writes pkg/.
+*.gem

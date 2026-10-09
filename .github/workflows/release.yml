@@ -1,0 +1,154 @@
+# Release
+#
+# Open or update the release pull request. After that pull request is merged,
+# run the test matrix, tag v1.2.3, push the gem, and open the GitHub Release.
+#
+# Release Please uses the Ruby strategy in release-please-config.json. The
+# manifest .release-please-manifest.json is the last released version. The
+# bootstrap SHA is the 2.1.0 commit, which is already on RubyGems and has no
+# v2.1.0 tag. Commits after that SHA are the next release.
+#
+# skip-github-release keeps the tag off the release pull request. This job
+# creates the tag with rake release, after the tests pass. Bundler tags
+# v1.2.3. Release Please recognizes that shape. A tag shaped like 1.2.3 does
+# not count. The existing tag 2.0.0 is that second shape.
+#
+# RubyGems trusted publishing names this workflow file release.yml and leaves
+# the environment empty. The publish job asks GitHub for an OIDC token
+# (id-token: write). rubygems/release-gem exchanges that token for a
+# short-lived RubyGems credential and runs bundle exec rake release.
+# https://guides.rubygems.org/trusted-publishing/
+#
+# The release pull request is opened with the workflow token. GitHub does not
+# start the test workflow on that pull request. The test job below is the run
+# that has to pass before the gem is pushed.
+#
+# One-time setup
+#   1. On the gem page, Trusted publishers, create a publisher:
+#      owner fulldecent, repository html-proofer-mailto_awesome,
+#      workflow filename release.yml, environment empty.
+#   2. Repository settings, Actions, General, Workflow permissions: read and
+#      write, and allow GitHub Actions to create and approve pull requests.
+
+name: Release
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to publish, for example v1.2.3. Leave empty to open or update the release pull request only.
+        required: false
+        type: string
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+jobs:
+  propose:
+    name: Open or update the release pull request
+    if: github.event_name == 'push' || inputs.tag == ''
+    runs-on: ubuntu-latest
+    outputs:
+      pr: ${{ steps.merged.outputs.pr }}
+      tag_name: ${{ steps.merged.outputs.tag_name }}
+    steps:
+      - name: Open the release pull request
+        uses: googleapis/release-please-action@v5
+        with:
+          skip-github-release: true
+
+      - name: Find a merged release pull request
+        id: merged
+        if: github.event_name == 'push'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          found=$(gh api "repos/$GITHUB_REPOSITORY/commits/$GITHUB_SHA/pulls" --jq '
+            .[] | select(.merged_at != null and any(.labels[]; .name == "autorelease: pending"))
+            | "\(.number) v\(.title | capture("release (?<v>[0-9]+[.][0-9]+[.][0-9]+)").v)"' | head -n 1)
+          if [ -n "$found" ]; then
+            read -r pr tag <<< "$found"
+            echo "pr=$pr" >> "$GITHUB_OUTPUT"
+            echo "tag_name=$tag" >> "$GITHUB_OUTPUT"
+          fi
+
+  test:
+    name: Test
+    needs: propose
+    if: |
+      always() &&
+      (needs.propose.result == 'success' || needs.propose.result == 'skipped') &&
+      (needs.propose.outputs.tag_name != '' ||
+       (github.event_name == 'workflow_dispatch' && inputs.tag != ''))
+    uses: ./.github/workflows/ruby.yml
+
+  publish:
+    name: Publish gem
+    needs: [propose, test]
+    if: |
+      always() &&
+      needs.test.result == 'success' &&
+      (needs.propose.outputs.tag_name != '' ||
+       (github.event_name == 'workflow_dispatch' && inputs.tag != ''))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - name: Check out this commit
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+          bundler-cache: true
+
+      - name: Require version.rb to match the tag
+        id: tag
+        env:
+          TAG: ${{ inputs.tag || needs.propose.outputs.tag_name }}
+        run: |
+          case "$TAG" in
+            v*.*.*) ;;
+            *) echo "tag must look like v1.2.3" >&2; exit 1 ;;
+          esac
+          file=$(ruby -e 'load "lib/html/proofer/mailto_awesome/version.rb"; print MailtoAwesome::VERSION')
+          version="${TAG#v}"
+          if [ "$file" != "$version" ]; then
+            echo "version.rb is ${file}; tag version is ${version}" >&2
+            exit 1
+          fi
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+
+      # rake release tags v1.2.3, pushes that tag, and pushes the gem.
+      - name: Push the gem
+        uses: rubygems/release-gem@v1
+
+      - name: Publish the GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ steps.tag.outputs.tag }}
+        run: |
+          gh release create "$TAG" \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "$TAG" \
+            --generate-notes \
+            --latest
+
+      - name: Mark the release pull request tagged
+        if: needs.propose.outputs.pr != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR: ${{ needs.propose.outputs.pr }}
+        run: |
+          gh api -X DELETE "repos/$GITHUB_REPOSITORY/issues/$PR/labels/autorelease:%20pending"
+          gh api "repos/$GITHUB_REPOSITORY/issues/$PR/labels" -f "labels[]=autorelease: tagged"
