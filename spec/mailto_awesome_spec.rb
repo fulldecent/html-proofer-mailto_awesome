@@ -20,6 +20,11 @@ RSpec.describe HTMLProofer::Check::MailtoAwesome do
     expect(descriptions_for(html)).to eq(["mailto: link is missing required parameters: subject, body"])
   end
 
+  it "reports a bare mailto link when spaces pad the href" do
+    html = '<a href=" mailto:support@example.com ">Email us</a>'
+    expect(descriptions_for(html)).to eq(["mailto: link is missing required parameters: subject, body"])
+  end
+
   it "does not treat header-like text in the address as a header field" do
     html = '<a href="mailto:subject=trick@example.com">Email us</a>'
     expect(descriptions_for(html)).to eq(["mailto: link is missing required parameters: subject, body"])

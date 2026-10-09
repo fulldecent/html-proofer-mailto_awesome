@@ -70,7 +70,7 @@ Run it with Bundler so the gem is on the load path:
 bundle exec rake
 ```
 
-`MailtoAwesome` looks at `a` elements. A `mailto:` link passes when every required header field is present. The default required fields are `subject` and `body`. An empty value still counts as present (`subject=`). Text in the address, such as `mailto:subject=trick@example.com`, is not a header field.
+`MailtoAwesome` looks at `a` elements. A `mailto:` link passes when every required header field is present. The default required fields are `subject` and `body`. An empty value still counts as present (`subject=`). Text in the address, such as `mailto:subject=trick@example.com`, is not a header field. Spaces and ASCII control characters at either end of the attribute are ignored. [URL parsing](https://url.spec.whatwg.org/#url-parsing) removes those characters before it reads the scheme, so a padded `mailto:support@example.com` is still checked.
 
 A link that omits a field fails with `mailto: link is missing required parameters: subject, body`. A `mailto:` value that Ruby cannot parse as a URI fails with `mailto: link is malformed and could not be parsed.`
 

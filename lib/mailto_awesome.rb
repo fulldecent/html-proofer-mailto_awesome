@@ -15,13 +15,21 @@ module HTMLProofer
     class MailtoAwesome < HTMLProofer::Check
       DEFAULT_REQUIRED_PARAMETERS = ["subject", "body"].freeze
 
+      # WHATWG URL parsing removes leading and trailing C0 controls and spaces
+      # before it reads the scheme. " mailto:support@example.com" is a mailto link.
+      # https://url.spec.whatwg.org/#url-parsing
+      LEADING_OR_TRAILING_URL_SPACE = /\A[\x00-\x1F ]+|[\x00-\x1F ]+\z/
+
       def run
         @html.css("a").each do |node|
           @link = create_element(node)
           next if @link.ignore?
 
           href = node["href"]
-          next unless href.is_a?(String) && href.match?(/\Amailto:/i)
+          next unless href.is_a?(String)
+
+          href = href.gsub(LEADING_OR_TRAILING_URL_SPACE, "")
+          next unless href.match?(/\Amailto:/i)
 
           begin
             names = header_names(href)
