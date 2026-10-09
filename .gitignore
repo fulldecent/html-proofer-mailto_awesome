@@ -1,3 +1,5 @@
+.DS_Store
+
 /.bundle/
 /.yardoc
 /_yardoc/
@@ -10,3 +12,6 @@
 # rspec failure tracking
 .rspec_status
 /vendor/*
+
+# The lint workflow runs npx, which can leave a local install tree.
+node_modules/

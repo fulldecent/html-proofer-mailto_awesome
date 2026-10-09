@@ -21,8 +21,9 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  # Minimum Ruby version supported by the Ruby project: https://www.ruby-lang.org/en/downloads/branches/
-  spec.required_ruby_version = ">= 3.1.0"
+  # Ruby branches that are still in normal or security maintenance:
+  # https://www.ruby-lang.org/en/downloads/branches/
+  spec.required_ruby_version = ">= 3.3.0"
   
   spec.metadata = {
     "bug_tracker_uri"   => "https://github.com/fulldecent/html-proofer-mailto_awesome/issues",
@@ -31,10 +32,11 @@ Gem::Specification.new do |spec|
     "rubygems_mfa_required" => "true"
   }
 
+  spec.add_dependency "html-proofer", "~> 5.0", ">= 5.0.4"
+  # Ruby 4.0 removed logger from the default gems. html-proofer still loads it.
+  # https://stdgems.org/libraries/logger/
+  spec.add_dependency "logger"
   spec.add_development_dependency "bundler", ">= 2.0"
   spec.add_development_dependency "rake", ">= 13.0"
-  spec.add_runtime_dependency 'html-proofer', '~> 5.0', '>= 5.0.4'
-  spec.add_development_dependency 'rspec', '~> 3.12'
-  spec.add_development_dependency 'vcr', '~> 6.1'
-  spec.add_development_dependency 'timecop', '~> 0.9'
+  spec.add_development_dependency "rspec", "~> 3.12"
 end

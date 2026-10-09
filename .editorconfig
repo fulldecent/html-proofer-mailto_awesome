@@ -1,0 +1,13 @@
+# UTF-8, LF, and spaces. Trailing whitespace is kept so a Markdown hard break (two spaces) stays intact.
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+indent_style = space
+insert_final_newline = true
+trim_trailing_whitespace = false
+max_line_length = 120
+
+[*.md]
+max_line_length = off
