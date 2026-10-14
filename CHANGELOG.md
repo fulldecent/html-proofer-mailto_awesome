@@ -1,5 +1,8 @@
 # Changelog
 
+<!-- Release Please inserts two blank lines after each version heading. -->
+<!-- markdownlint-configure-file { "MD012": { "maximum": 2 } } -->
+
 ## [2.1.1](https://github.com/fulldecent/html-proofer-mailto_awesome/compare/v2.1.0...v2.1.1) (2026-10-09)
 
 
